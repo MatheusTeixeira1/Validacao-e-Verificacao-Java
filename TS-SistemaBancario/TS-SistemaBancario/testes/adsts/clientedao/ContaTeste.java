@@ -1,5 +1,6 @@
 package adsts.clientedao;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -73,7 +74,7 @@ public class ContaTeste {
     }
     
     @Test
-    @Order(1)
+    @Order(4)
     public void testeAdicionarConta(){
     	ContaCorrente contaNova = new ContaCorrente(3, 1200.0, true);
     	int tamanhoListaContasAntes = cDAO.getContasDoBanco().size();
@@ -93,7 +94,7 @@ public class ContaTeste {
     }
     
     @Test
-    @Order(1)
+    @Order(7)
     public void testeRemoveConta(){
     	int tamanhoListaContasAntes = cDAO.getContasDoBanco().size();
     	cDAO.removeConta(3);
@@ -103,14 +104,22 @@ public class ContaTeste {
     }
     
     @Test
-    @Order(1)
+    @Order(5)
     public void testeContaAtiva(){
+    	assertFalse(cDAO.contaAtiva(1));
+    	ContaCorrente conta = cDAO.pesquisaConta(1);
+    	conta.setAtiva(false);
+    	assertFalse(conta.isAtiva());
     	assertTrue(cDAO.contaAtiva(1));
     }
     
     @Test
-    @Order(1)
+    @Order(6)
     public void testeTransfereValor(){
+    	ContaCorrente conta1 = cDAO.pesquisaConta(1);
+    	ContaCorrente conta2 = cDAO.pesquisaConta(2);
     	
+    	assertTrue(cDAO.transfereValor(1, 600, 2));
+    	assertFalse(cDAO.transfereValor(1, 500, 2));
     }
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import br.com.adsts.model.ContaCorrente;
 
 /**
- * Classe de negócio para realizar operações sobre as contas do banco.
+ * Classe de negï¿½cio para realizar operaï¿½ï¿½es sobre as contas do banco.
  * @author Sandro
  */
 public class ContaCorrenteDAO {
@@ -27,7 +27,7 @@ public class ContaCorrenteDAO {
 	/**
 	 * Pesquisa conta por ID.
 	 * @param idConta
-	 * @return conta pesquisada ou null, caso não encontrada
+	 * @return conta pesquisada ou null, caso nï¿½o encontrada
 	 */
 	public ContaCorrente pesquisaConta (int idConta) {
 
@@ -40,7 +40,7 @@ public class ContaCorrenteDAO {
 	}
 	
 	/**
-	 * Adiciona nova conta à lista de contas do banco.
+	 * Adiciona nova conta ï¿½ lista de contas do banco.
 	 * @param novaConta
 	 */
 	public void adicionaConta (ContaCorrente novaConta) {
@@ -50,7 +50,7 @@ public class ContaCorrenteDAO {
 	/**
 	 * Remove conta da lista de contas do banco.
 	 * @param idConta 
-	 * @return true se conta removida ou false, caso contrário.
+	 * @return true se conta removida ou false, caso contrï¿½rio.
 	 */
 	public boolean removeConta (int idConta) {
 		
@@ -69,9 +69,9 @@ public class ContaCorrenteDAO {
 	}
 
 	/**
-	 * Informa se determinada conta está ativa.
+	 * Informa se determinada conta estï¿½ ativa.
 	 * @param idConta
-	 * @return true se conta ativa ou false, caso contrário. 
+	 * @return true se conta ativa ou false, caso contrï¿½rio. 
 	 */
 	public boolean contaAtiva (int idConta) {
 		
@@ -92,12 +92,12 @@ public class ContaCorrenteDAO {
 	
 	/**
 	 * Transfere um determinado valor de uma conta Origem para uma conta Destino.
-	 * Se saldo insuficiente, valor não será transferido.
+	 * Se saldo insuficiente, valor nï¿½o serï¿½ transferido.
 	 * 
-	 * @param idContaOrigem conta que terá o valor deduzido
+	 * @param idContaOrigem conta que terï¿½ o valor deduzido
 	 * @param valor valor a ser transferido
-	 * @param idContaDestino conta que terá o valor acrescido
-	 * @return true, se a transferência realizada com sucesso.
+	 * @param idContaDestino conta que terï¿½ o valor acrescido
+	 * @return true, se a transferï¿½ncia realizada com sucesso.
 	 */
 	public boolean transfereValor (int idContaOrigem, double valor, int idContaDestino) {
 		boolean sucesso = false;
@@ -105,11 +105,11 @@ public class ContaCorrenteDAO {
 		ContaCorrente contaOrigem = pesquisaConta(idContaOrigem);
 		ContaCorrente contaDestino = pesquisaConta(idContaDestino);
 		
-//		if (contaOrigem.getSaldo() >= valor) {
+		if (contaOrigem.getSaldo() >= valor) {
 			contaDestino.setSaldo(contaDestino.getSaldo() + valor);
 			contaOrigem.setSaldo(contaOrigem.getSaldo() - valor);
 			sucesso = true;
-//		}
+		}
 	
 		return sucesso;
 	}
